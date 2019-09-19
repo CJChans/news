@@ -1,6 +1,10 @@
      const path = require("path");
      //  导入提取样式的webpack插件
      const ExtractTextPlugin = require("extract-text-webpack-plugin");
+     //该插件负责自动在html文件自动引入文件
+     const HtmlWebpackPlugin = require("html-webpack-plugin");
+     // 导入清除插件
+     const { CleanWebpackPlugin } = require('clean-webpack-plugin');
      //webpack配置
      module.exports = {
          //入口文件
@@ -49,6 +53,10 @@
              ]
          },
          plugins: [
-             new ExtractTextPlugin('style/style.css') // 提取到dist的style文件夹中
+             new ExtractTextPlugin('style/style.css'), // 提取到dist的style文件夹中            
+             new CleanWebpackPlugin(), // 调用清除打包目录插件
+             new HtmlWebpackPlugin({
+                 template: "public/index.html" // template指定默认html模板
+             })
          ]
      }
