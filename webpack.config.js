@@ -16,6 +16,11 @@
              path: path.resolve("dist"),
              filename: "bundle.js"
          },
+         //  devtool: "source-map", // + 生成映射源代码文件
+         // + 开发服务配置
+         devServer: {
+             port: 8080 // 默认端口是8080
+         },
          module: {
              rules: [{
                      test: /\.css$/,
