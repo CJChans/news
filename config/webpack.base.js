@@ -30,6 +30,15 @@ module.exports = {
             chunks: 'all' // 提取所有文件的共同模块
         }
     },
+    //  + 添加模块解释
+    resolve: {
+        alias: {
+            // 1.以后@符号就是src目录
+            '@': path.resolve(__dirname, "../src"),
+        },
+        // 2.省略导入模块时的后缀名。
+        extensions: ['.js', '.json', '.vue']
+    },
     module: {
         rules: [{
                 test: /\.css$/,

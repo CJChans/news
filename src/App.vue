@@ -1,6 +1,8 @@
     <<template>
         <div class="red">
-            这是第一个单文件组件123，{{message}}
+            这是第一个单文件组件123，{{message}},
+            <router-link to="/login">登录项</router-link>
+            <router-view></router-view>
         </div>
     </template>
     
@@ -16,6 +18,7 @@
     
     <style>
         .red{
-            color:aqua;
+            color:green;
+            font-size: 24px;
         }
     </style>
