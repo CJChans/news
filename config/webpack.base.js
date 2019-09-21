@@ -5,6 +5,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 导入清除插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// 引入vue-loader插件
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = {
     //入口文件
     // entry: "./src/index.js",
@@ -31,14 +34,14 @@ module.exports = {
         rules: [{
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({ // 提取css
-                    fallback: "style-loader",
+                    fallback: "vue-style-loader",
                     use: ["css-loader"]
                 })
             },
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({ // 提取less
-                    fallback: "style-loader",
+                    fallback: "vue-style-loader",
                     use: ["css-loader", "less-loader"]
                 })
             },
@@ -51,7 +54,12 @@ module.exports = {
                         outputPath: "images" //  输出到dist下的images目录
                     }
                 }]
-            }
+            },
+            //匹配vue的单文件组件
+            {
+                test: /\.vue$/,
+                use: ['vue-loader']
+            },
         ]
     },
     plugins: [
@@ -59,6 +67,8 @@ module.exports = {
         new CleanWebpackPlugin(), // 调用清除打包目录插件
         new HtmlWebpackPlugin({
             template: "public/index.html" // template指定默认html模板
-        })
+        }),
+        // vue加载器插件
+        new VueLoaderPlugin()
     ]
 }
