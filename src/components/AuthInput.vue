@@ -57,7 +57,7 @@ export default {
 
         //输入框失去焦点时候触发
         handleChange(){
-            if(this.err_message){
+            if(this.err_message&&this.status=="error"){
                 alert(this.err_message)
             }
         }
@@ -77,9 +77,9 @@ export default {
         outline: none;
     }
     .success{
-        border-color:lightseagreen;
+        border-bottom-color:lightseagreen;
     }
     .error{
-        border-color:red; 
+        border-bottom-color:red; 
     }
 </style>
