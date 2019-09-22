@@ -2,6 +2,9 @@
 
     //路由：1.导入路由构造函数
     import VueRouter from "vue-router";
+    //导入UI-vantage组件
+
+
     //1.导入组件
     import App from "@/App";
     import Login from "@/pages/Login";
