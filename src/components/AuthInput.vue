@@ -75,6 +75,7 @@ export default {
         border: none;
         border-bottom: 2px solid #666;
         outline: none;
+        margin-bottom: 20px;
     }
     .success{
         border-bottom-color:lightseagreen;

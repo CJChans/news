@@ -37,13 +37,15 @@
       
 
     <!-- 登录 -->
-      <button @click="handleSubmit">登录按钮</button>
+      <!-- <button @click="handleSubmit">登录按钮</button> -->
+      <AuthButton text="登录" @click="handleSubmit">登录按钮</AuthButton>
   </div>
 </template>
 
 <script>
 
 import AuthInput from "@/components/AuthInput";
+import AuthButton from "@/components/AuthButton";
 export default {
   data(){
     return{
@@ -55,7 +57,8 @@ export default {
   },
   //注册组件
   components:{
-    AuthInput
+    AuthInput,
+    AuthButton
   },
 
   methods:{
