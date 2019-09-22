@@ -25,26 +25,29 @@
         err_message="手机号码格式不正确"
        ></AuthInput>
 
+       <!-- 昵称组件 -->
+       <AuthInput
+       placeholder="昵称"
+       v-model="form.nickname"
+
+       :rule="/^[0-9a-zA-Z\u4e00-\u9fa5]{2,6}$/"
+       err_message="昵称格式不正确"
+       ></AuthInput>
+
         <!-- 密码框组件 -->
        <AuthInput
        placeholder="密码"
-       type="password"
        v-model="form.password"
        
        :rule="/^[0-9a-zA-Z]{3,12}$/"
        err_message="密码格式不正确"
        ></AuthInput>
       </div>
-
-      <p class="tips">
-        没有账号？
-        <router-link to="/register">去注册</router-link>
-      </p>
       
 
     <!-- 登录 -->
       <!-- <button @click="handleSubmit">登录按钮</button> -->
-      <AuthButton text="登录" @click="handleSubmit">登录按钮</AuthButton>
+      <AuthButton text="注册" @click="handleSubmit">注册按钮</AuthButton>
   </div>
 </template>
 
@@ -58,7 +61,8 @@ export default {
     return{
       form:{
         username:"",
-        password:""
+        password:"",
+        nickname:""
       },
     }
   },
@@ -79,7 +83,7 @@ export default {
     // console.log(this.form)
       this.$axios({
         // url:"http://localhost:3000/login",
-        url:"/login",
+        url:"/register",
         method:"post",//method相当于type
         data:this.form
         //.then的回调函数相当于success
@@ -88,7 +92,7 @@ export default {
         const{message} = res.data;
         if(message === "登录成功"){
           //跳转到首页
-          this.$router.push("/")
+          this.$router.push("/login")
         }
       })
     }
@@ -115,13 +119,6 @@ export default {
        color: #d81e06;
     }           
 
-  }
-  .tips{
-    text-align: right;
-    margin-bottom: 20px;
-    a{
-      color:#3385ff;
-    }
   }
 
 </style>
