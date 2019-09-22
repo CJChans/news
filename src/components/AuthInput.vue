@@ -58,7 +58,8 @@ export default {
         //输入框失去焦点时候触发
         handleChange(){
             if(this.err_message&&this.status=="error"){
-                alert(this.err_message)
+                // alert(this.err_message)
+                this.$toast.fail(this.err_message)
             }
         }
     },
