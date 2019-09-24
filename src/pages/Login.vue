@@ -84,7 +84,7 @@ export default {
         data:this.form
         //.then的回调函数相当于success
       }).then( res=>{
-        console.log(res.data)
+        // console.log(res.data)
         const{message,data} = res.data;
         if(message === "登录成功"){
           //把token和id保存到本地
