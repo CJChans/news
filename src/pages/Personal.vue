@@ -34,6 +34,19 @@ export default {
     //注册组件
     components:{
         CellBar,
+    },
+
+    mounted(){
+        //请求个人资料接口
+        this.$axios({
+            url:"/user/" + localStorage.getItem("user_id"),
+            //添加头信息
+            header:{
+                Authorization:localStorage.getItem("token")
+            }
+        }).then(res =>{
+            // console.log(res)
+        })
     }
 }
 </script>
