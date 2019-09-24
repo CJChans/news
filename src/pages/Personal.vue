@@ -17,8 +17,14 @@
 </template>
 
 <script>
-export default {
+    //导入条形组件
+import Personal from "@/components/Personal";
 
+export default {
+    //注册组件
+    components:{
+        Personal,
+    }
 }
 </script>
 
