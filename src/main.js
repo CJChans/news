@@ -43,7 +43,7 @@
     router.beforeEach((to, from, next) => {
             //是否有token
             const hasToken = localStorage.getItem("token");
-            console.log(hasToken)
+            // console.log(hasToken)
 
             //判断是否是需要登录权限的页面
             if (to.path === "/personal") {

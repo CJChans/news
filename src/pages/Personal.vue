@@ -12,8 +12,9 @@
           {{profile.nickname}}
         </div>
         <div class="time">2019-9-24</div>
-        <span class="iconfont iconjiantou1"></span>
+       
       </div>
+       <span class="iconfont iconjiantou1"></span>
     </div>
     <div>
       <!-- 调用条形组件 -->
@@ -78,34 +79,34 @@ export default {
 };
 </script>
 
-<style scope lang="less">
-.profile {
-  display: flex;
-  padding: 20px 10px;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 5px solid #ddd;
+<style scoped lang="less">
+    .profile {
+    display: flex;
+    padding: 20px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid #ddd;
 
-  img {
-    width: 70/360 * 100vw;
-    height: 70/360 * 100vw;
-    border-radius: 50%;
-  }
-
-  .profile-center {
-    flex: 1;
-    padding: 0 10px;
-  }
-  .name {
-    span {
-      color: #75b9eb;
+    img {
+        width: 70/360 * 100vw;
+        height: 70/360 * 100vw;
+        border-radius: 50%;
     }
-  }
 
-  .time {
-    color: #666;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-}
+    .profile-center {
+        flex: 1;
+        padding: 0 15px;
+    }
+    .name {
+        span {
+        color: #75b9eb;
+        }
+    }
+
+    .time {
+        color: #666;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    }
 </style>
