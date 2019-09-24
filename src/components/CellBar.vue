@@ -1,21 +1,22 @@
 <template>
-  <div class="cell-wrap">
-      <div class="cell">
-          <span>我的关注</span>
-          <i>关注的用户</i>
+  <div class="cell-wrap" @click="$emit('click',$event)">
+      <div class="cell" >
+          <span>{{lable}}</span>
+          <i>{{text}}</i>
           <span class="iconfont iconjiantou1"></span>
       </div>
+  </div>
 </template>
 
 <script>
 export default {
-
+    props:["lable","text"]
 }
 </script>
 
 <style scoped lang="less">
     .cell-wrap{
-        padding-left: 10px;
+        padding-left: 20px;
 
         .cell{
             display: flex;
