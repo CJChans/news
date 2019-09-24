@@ -54,7 +54,7 @@ export default {
     }).then(res => {
     //   console.log(res)
       const { data } = res.data;
-
+    if(data){
       this.profile = data;
       console.log(this.profile);
     //如果用户有头像
@@ -62,6 +62,7 @@ export default {
         this.profile.head_img =this.$axios.defaults.baseURL + data.head_img 
     }else{
         this.profile.head_img = "../../static/20150108164231_t432j.png";
+    }
     }
     });
   }
