@@ -10,7 +10,7 @@
       </div>
 
       <!-- 调用条形组件 -->
-      <CellBar label="昵称" :text="profile.nickname" @click="show1 = !show1"/>
+      <CellBar lable="昵称" :text="profile.nickname" @click="show1 = !show1"/>
 
       <!-- 昵称编辑输入框 -->
       <!-- 鼠标放到属性上就可以查看 -->
@@ -18,9 +18,10 @@
         v-model="show1"
         title="编辑昵称"
         show-cancel-button
+        @confirm="handlNickname"
         >
         <!-- value读取昵称 -->
-        <van-field :value="profile.nickname" placeholder="请输入用户名" />
+        <van-field :value="profile.nickname" placeholder="请输入用户名"  ref="nickname"/>
       </van-dialog>
 
       <CellBar lable="密码" :text="profile.password" type="password"/>
@@ -90,6 +91,33 @@ export default {
                         this.$toast.success("修改成功了哦");
                     }
                 })
+            })
+        },
+        //编辑昵称
+        handlNickname(){
+        //拿到input输入框的值
+        // console.log(this.$refs.nickname)
+        const value = this.$refs.nickname.$refs.input.value;
+        this.$axios({
+            url:'/user_update/' + localStorage.getItem("user_id"),
+             method:'post',
+            //添加头信息
+            headers: {
+            Authorization: localStorage.getItem("token")
+            },
+            data:{
+                nickname:value
+            }
+            }).then(res => {
+            // console.log(res)
+            const status = res.status;
+
+            //成功的弹窗提示
+            if(status === 200){
+                // 替换profile的昵称
+                this.profile.nickname = value;
+                this.$toast.success("修改成功了哦");
+                }
             })
         }
     },
