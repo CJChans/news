@@ -72,7 +72,7 @@ router.beforeEach((to, from, next) => {
 axios.interceptors.response.use(res => {
     // console.log(res)
     const { message, statusCode } = res.data;
-    if (statusCode !== 200) {
+    if (statusCode == 400 || statusCode == 401) {
         Toast.fail(message)
     }
     // token过期了，或者token无效，一般引起的原因可能token被清空，密码修改了
