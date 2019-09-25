@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/editprofile">
     <div class="profile">
       <!-- <img src="../../static/20150108164231_t432j.png" alt=""> -->
       <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
@@ -16,6 +17,7 @@
       </div>
        <span class="iconfont iconjiantou1"></span>
     </div>
+    </router-link>
     <div>
       <!-- 调用条形组件 -->
       <CellBar lable="我的关注" text="关注的用户" />
