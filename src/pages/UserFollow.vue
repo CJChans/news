@@ -3,11 +3,11 @@
       <HeaderNormal title="我的关注"/>
 
       <!-- 关注用户的列表 -->
-      <div class="follow-item">
-          <img src="../../static/c36e17c5c21de631d94fe0caf55c94e2.png" alt="">
+      <div class="follow-item" v-for="(item,index) in list" :key="index">
+          <img :src=" $axios.defaults.baseURL + item.head_img " alt="">
 
           <div class="item-center">
-              <p>火星新闻</p>
+              <p>{{item.nickname}}</p>
               <span>2019-9-25</span>
           </div>
 
@@ -20,9 +20,29 @@
 import  HeaderNormal from "@/components/HeaderNormal"
 
 export default {
+    data(){
+        return{
+            list:[]
+        }
+    },
  components: {
         HeaderNormal
-    }
+    },
+     mounted(){
+        // 请求用户关注的列表
+        this.$axios({
+            url: "/user_follows",
+            // 添加头信息
+            headers: {
+                Authorization: localStorage.getItem("token")
+            },
+        }).then(res => {
+            console.log(res.data)
+            const {data} = res.data;
+            // 赋值给关注的列表
+            this.list = data;
+        })
+     }
 
 }
 </script>
