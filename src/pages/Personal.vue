@@ -20,7 +20,10 @@
     </router-link>
     <div>
       <!-- 调用条形组件 -->
+      <router-link to="/user_follow">
       <CellBar lable="我的关注" text="关注的用户" />
+       </router-link>
+
       <CellBar lable="我的跟帖" text="跟帖/回复" />
       <CellBar lable="我的收藏" text="文章/视频" />
       <CellBar lable="退出" @click="handleLogout" />
