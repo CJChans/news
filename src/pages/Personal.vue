@@ -24,7 +24,9 @@
       <CellBar lable="我的关注" text="关注的用户" />
        </router-link>
 
+      <router-link to="/user_comment">
       <CellBar lable="我的跟帖" text="跟帖/回复" />
+      </router-link>
       <CellBar lable="我的收藏" text="文章/视频" />
       <CellBar lable="退出" @click="handleLogout" />
     </div>
@@ -58,7 +60,7 @@ export default {
     },
   mounted() {
     //请求个人资料接口
-    console.log(localStorage.getItem("token"));
+    // console.log(localStorage.getItem("token"));
 
     this.$axios({
       url: "/user/" + localStorage.getItem("user_id"),
