@@ -76,7 +76,7 @@ export default {
             //性别弹窗
             show3:false,
 
-            genderCache :`1`
+            genderCache :`0`
         }
     },
     components:{
@@ -165,6 +165,13 @@ export default {
 
         //编辑性别
         handlGender(){
+        // console.log(this.$refs.gender)
+         // 把性别装换为数字
+        const gender = +this.genderCache;
+        this.editProfile({gender},() =>{
+            // 修改成功之后替换页面显示的性别
+            this.profile.gender = gender
+        })
 
         }
     },
