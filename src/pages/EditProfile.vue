@@ -46,6 +46,7 @@ export default {
                 headers: {
                     Authorization: localStorage.getItem("token")
                 },
+                //把表单数据上传到服务器
                 data:formData
             }).then(res => {
                 // console.log(res)
@@ -53,7 +54,28 @@ export default {
                 const {data} = res.data;
 
                 //替换用户资料的头像
-                this.profile.head_img = this.$axios.defaults.baseURL + data.url
+                this.profile.head_img = this.$axios.defaults.baseURL + data.url;
+
+                //把头像url上传到用户资料
+                this.$axios({
+                    url:'/user_update/' + localStorage.getItem("user_id"),
+                    method:'post',
+                     //添加头信息
+                    headers: {
+                    Authorization: localStorage.getItem("token")
+                    },
+                    data:{
+                        head_img:data.url
+                    }
+                }).then(res => {
+                    // console.log(res)
+                    const status = res.status;
+
+                    //成功的弹窗提示
+                    if(status === 200){
+                        this.$toast.success("修改成功了哦");
+                    }
+                })
             })
         }
     },
@@ -91,7 +113,7 @@ export default {
          position: relative;
       .uploader{
         position: absolute;
-        opacity: .8;
+        opacity: 0;
         }
        
        img{
