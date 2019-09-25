@@ -15,7 +15,7 @@ export default {
 
 <style scoped lang="less">
     .header{
-        height: 60/360*100vw;
+        height: 50/360*100vw;
         display: flex;
         justify-content: space-between;
         padding: 20px;
