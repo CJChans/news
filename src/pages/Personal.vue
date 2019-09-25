@@ -68,7 +68,7 @@ export default {
       const { data } = res.data;
     if(data){
       this.profile = data;
-      console.log(this.profile);
+      // console.log(this.profile);
     //如果用户有头像
     if(data.head_img){
         this.profile.head_img =this.$axios.defaults.baseURL + data.head_img 

@@ -2,7 +2,7 @@
   <div class="cell-wrap" @click="$emit('click',$event)">
       <div class="cell" >
           <span>{{lable}}</span>
-          <i>{{text}}</i>
+          <i>{{ type === 'password' ? '******' : text}}</i>
           <span class="iconfont iconjiantou1"></span>
       </div>
   </div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    props:["lable","text"]
+    props:["lable","text","type"]
 }
 </script>
 
