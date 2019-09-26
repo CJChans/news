@@ -128,7 +128,21 @@ export default {
         this.$axios(config).then(res => {
             // console.log(res)
             const {data} = res.data
-            this.categories = data
+            const newData = []
+
+            //循环给每一个栏目都添加四个独立的属性
+            data.forEach(item => {
+                item.posts = [];
+                item.loading = false;
+                item.finished = false;
+                item.pageIndex = 1;
+                newData.push(item);
+            })
+
+            //保存栏目列表到新的数据
+            this.categories = newData
+            // this.categories = data
+            console.log(this.categories)
         });
 
         // 请求文章列表
