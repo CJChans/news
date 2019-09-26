@@ -25,7 +25,7 @@
         :key="index"
         :title="item.name"
         >
-            <p v-for="index in 10" :key="index"><PostCard/> </p>
+            <PostCard v-for="(item,index) in posts" :key="index" :post="item"/>
         </van-tab>
     </van-tabs>
 
@@ -44,7 +44,10 @@ export default {
             //栏目列表
             categories:[],
             //栏目id
-            cid:999
+            cid:999,
+
+            //默认的文章列表
+            posts:[]
         }
     },
 
@@ -52,7 +55,7 @@ export default {
         active(){
             // console.log(this.categories)
             this.cid = this.categories[this.active].id
-            console.log(this.cid )
+            // console.log(this.cid )
         }
     },
 
@@ -73,9 +76,19 @@ export default {
         }
 
         this.$axios(config).then(res => {
-            console.log(res)
+            // console.log(res)
             const {data} = res.data
             this.categories = data
+        });
+
+        // 请求文章列表
+        this.$axios({
+            url: `/post?category=${this.cid}`
+        }).then(res => {
+            // console.log(res.data)
+            const {data} = res.data;
+            // 默认赋值给头条的列表
+            this.posts = data;
         })
     }
 }
