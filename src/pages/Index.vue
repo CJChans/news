@@ -38,10 +38,21 @@ export default {
     data(){
         return{
             // 当前默认的栏目, 没有登录应该0，有登录等于1, 最终的效果为了默认显示头条
+            
             active: localStorage.getItem("token") ? 1 : 0, 
 
             //栏目列表
-            categories:[]
+            categories:[],
+            //栏目id
+            cid:999
+        }
+    },
+
+    watch:{
+        active(){
+            // console.log(this.categories)
+            this.cid = this.categories[this.active].id
+            console.log(this.cid )
         }
     },
 
