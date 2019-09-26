@@ -15,6 +15,7 @@
 
       <div class="card-img">
           <img :src="post.cover[0].url" alt="">
+         
       </div>
   </div>
 
@@ -25,6 +26,9 @@
         </div>
         <div class="video">
             <img :src="post.cover[0].url" alt="">
+             <span class="video-layer">
+                <i class="iconfont iconshipin"></i>
+            </span>
         </div>
         <p class="post-info">
             <span>{{post.user.nickname}}</span>
@@ -154,6 +158,11 @@ export default {
                 overflow: hidden;
         }
         .video{
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            
             img{
                 display: block;
                 width: 340/360*100vw;
@@ -161,8 +170,26 @@ export default {
                 //图片等比例缩放
                 object-fit: cover;
             }
+
+            .video-layer{
+                position: absolute;
+                background: rgba(0, 0, 0, 0.4);
+                width:46 / 360 * 100vw;
+                height:46 / 360 * 100vw;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+
+                i{
+                    font-size: 36/360*100vw;
+                    color: #fff;
+                }
         }
-         .post-info{
+        
+    }
+     .post-info{
                font-size: 12px;
                color: #999;
            }
