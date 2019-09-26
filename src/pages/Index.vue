@@ -85,7 +85,7 @@ export default {
         this.$axios({
             url: `/post?category=${this.cid}`
         }).then(res => {
-            // console.log(res.data)
+            console.log(res.data)
             const {data} = res.data;
             // 默认赋值给头条的列表
             this.posts = data;
