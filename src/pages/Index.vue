@@ -78,4 +78,12 @@ export default {
             }
         }
     }
+    /deep/ .van-tabs__nav{
+        background:#f3e8e8;
+    }
+    /deep/ .van-tabs__line{
+        width:40px;
+        height:2px;
+        background-color: blueviolet;
+    }
 </style>
