@@ -108,7 +108,7 @@ export default {
                         if(callback){
                             callback();
                         }
-                        this.$toast.success("修改成功了哦");
+                        this.$toast.success("修改成功了");
                     }
                 })
         },
