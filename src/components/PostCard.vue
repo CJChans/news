@@ -66,7 +66,7 @@ export default {
 <style scoped lang="less">
     .card{
         display: flex;
-        padding: 20px 10px;
+        padding: 15px 10px;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #ccc;
@@ -96,6 +96,7 @@ export default {
         }
 
         .card-img{
+            margin-left: 5px;
             img{
                 display: bock;
                 width: 120/360*100vw;
