@@ -25,7 +25,7 @@
         :key="index"
         :title="'标签 ' + index"
         >
-            <p v-for="index in 100" :key="index">内容 {{ index }} </p>
+            <p v-for="index in 10" :key="index"><PostCard/> </p>
         </van-tab>
     </van-tabs>
 
@@ -33,11 +33,15 @@
 </template>
 
 <script>
+import PostCard from "@/components/PostCard";
 export default {
     data(){
         return{
             active:1
         }
+    },
+    components:{
+        PostCard
     }
 }
 </script>
