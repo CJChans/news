@@ -76,7 +76,10 @@ export default {
         active(){
             // console.log(this.categories)
             this.cid = this.categories[this.active].id
-            // console.log(this.cid )
+            console.log(this.cid )
+            console.log(this.active )
+            this.onLoad();
+
         }
     },
 
@@ -90,26 +93,27 @@ export default {
             setTimeout(() => {
                 // console.log("已经滚动到底部");
                 // 请求文章列表
+                const category = this.categories[this.active]
                 this.$axios({
-                    url: `/post?category=${this.cid}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`
+                    url: `/post?category=${this.cid}&pageIndex=${category.pageIndex}&pageSize=${this.pageSize}`
                 }).then(res => {
                     // console.log(res.data)
                     const {data} = res.data;
                     // 没有更多的数据了
                     if(data.length < this.pageSize){
-                        this.finished = true;
+                        category.finished = true;
                     }
                     // 默认赋值给头条的列表
-                    this.posts = [...this.posts,...data];
+                    category.posts = [...category.posts,...data];
 
                     //页数加一
-                    this.pageIndex++
+                    category.pageIndex++
 
                     // 告诉onload事件这次的数据加载已经完毕，下次可以继续的出发onload
-                    this.loading = false;
+                    category.loading = false;
                 })
                
-            }, 5000)
+            }, 3000)
         }
     },
 
@@ -152,7 +156,7 @@ export default {
             const {data} = res.data;
             // 默认赋值给头条的列表
             this.categories[this.active].posts = data;
-            console.log(this.categories)
+            // console.log(this.categories)
             //页数加一
             this.categories[this.active].pageIndex++
         })
