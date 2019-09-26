@@ -1,7 +1,7 @@
 <template>
 <div>
     <!-- 单张图片显示的布局 -->
-  <div class="card" v-if="post.cover.length > 0 && post.cover.length < 3">
+  <div class="card" v-if="post.cover.length ==1 && post.type===1">
       <!-- 左侧文字 -->
       <div class="card-left">
           <div class="post-title">
@@ -17,6 +17,20 @@
           <img :src="post.cover[0].url" alt="">
       </div>
   </div>
+
+  <!-- 视频显示的布局 -->
+    <div class="video-cart" v-if="post.type === 2 && post.cover.length === 1">
+        <div class="post-title">
+            {{post.title}}
+        </div>
+        <div class="video">
+            <img :src="post.cover[0].url" alt="">
+        </div>
+        <p class="post-info">
+            <span>{{post.user.nickname}}</span>
+            <span>{{post.comment_length}}跟帖</span>
+        </p>
+    </div>
 
     <!-- 3张图片显示的布局 -->
     <div class="img-cart" v-if="post.cover.length >= 3">
@@ -112,6 +126,38 @@ export default {
                 width: 32%;
                 height: 80/360*100vw;
 
+                //图片等比例缩放
+                object-fit: cover;
+            }
+        }
+         .post-info{
+               font-size: 12px;
+               color: #999;
+           }
+    }
+
+    .video-cart{
+        display: flex;
+        padding: 20px 10px;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+
+        .post-title{
+            font-size: 14px;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            //文本溢出隐藏
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+        }
+        .video{
+            img{
+                display: block;
+                width: 340/360*100vw;
+                height: 170/360*100vw;
                 //图片等比例缩放
                 object-fit: cover;
             }
