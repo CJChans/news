@@ -30,14 +30,14 @@
             <!-- finished: 是否加载完毕 -->
             <!-- load: 到底部触发的事件 -->
             <van-list
-                v-model="loading"
-                :finished="finished"
+                v-model="item.loading"
+                :finished="item.finished"
                 finished-text="没有更多了"
                 @load="onLoad"
                 :immediate-check="false"
                 >
 
-                 <PostCard v-for="(item,index) in posts" :key="index" :post="item"/>
+                 <PostCard v-for="(item,index) in item.posts" :key="index" :post="item"/>
             </van-list>
         </van-tab>
     </van-tabs>
@@ -59,7 +59,7 @@ export default {
             //栏目id
             cid:999,
 
-            //默认的文章列表
+            // //默认的文章列表
             posts:[],
             // 是否在加载,加载完毕后需要手动变为false
             loading: false,
@@ -142,21 +142,23 @@ export default {
             //保存栏目列表到新的数据
             this.categories = newData
             // this.categories = data
-            console.log(this.categories)
-        });
+            // console.log(this.categories)
 
-        // 请求文章列表
+            // 必须先等待栏目请求完毕再请求文章列表
         this.$axios({
             url: `/post?category=${this.cid}&pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`
         }).then(res => {
             // console.log(res.data)
             const {data} = res.data;
             // 默认赋值给头条的列表
-            this.posts = data;
-
+            this.categories[this.active].posts = data;
+            console.log(this.categories)
             //页数加一
-            this.pageIndex++
+            this.categories[this.active].pageIndex++
         })
+        });
+
+        
     }
 }
 </script>
