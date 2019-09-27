@@ -1,4 +1,5 @@
 <template>
+    <!-- 头部组件 -->
     <!-- 个人中心页板块的头部 -->
     <div class="header">
         <span class="iconfont iconjiantou2" @click="$router.back()"></span>

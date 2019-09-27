@@ -1,4 +1,6 @@
 <template>
+<!-- 个人中心页 -->
+
   <div>
     <router-link to="/editprofile">
       <div class="profile">

@@ -1,4 +1,6 @@
 <template>
+<!-- 输入框组件 -->
+
   <!-- @input是输入框每次输入时候都会触发 -->
   <!-- :class值如果是对象的话，key是class的名称，如果这个key的值是true时候就加上该class -->
   <input 

@@ -1,4 +1,5 @@
 <template>
+<!-- 登录页 -->
   <div class="container">
     <!-- 关闭的按钮 -->
       <div class="close">

@@ -1,4 +1,5 @@
 <template>
+<!-- 首页 -->
   <div>
       <!-- 红色块头部 -->
       <div class="header">

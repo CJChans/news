@@ -1,4 +1,5 @@
 <template>
+    <!-- 我的跟帖页面 -->
   <div>
       <HeaderNormal title="我的跟帖"/>
 

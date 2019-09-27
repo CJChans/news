@@ -1,4 +1,5 @@
 <template>
+<!-- 编辑资料页面 -->
   <div>
       <!-- 头部 -->
       <HeaderNormal title="编辑资料"/>

@@ -1,4 +1,5 @@
 <template>
+<!-- 条形组件 -->
   <div class="cell-wrap" @click="$emit('click',$event)">
       <div class="cell" >
           <span>{{lable}}</span>

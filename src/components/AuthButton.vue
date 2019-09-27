@@ -1,4 +1,5 @@
 <template>
+<!-- 按钮组件 -->
   <div class="button" @click="handleClick">{{text}}</div>
 </template>
 

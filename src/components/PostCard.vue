@@ -1,4 +1,5 @@
 <template>
+<!-- 首页内容组件 -->
 <div>
     <!-- 单张图片显示的布局 -->
   <div class="card" v-if="post.cover.length ==1 && post.type===1">
