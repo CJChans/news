@@ -77,8 +77,8 @@ export default {
         active(){
             // console.log(this.categories)
             this.cid = this.categories[this.active].id
-            console.log(this.cid )
-            console.log(this.active )
+            // console.log(this.cid )
+            // console.log(this.active )
             this.onLoad();
 
         }
@@ -114,7 +114,7 @@ export default {
                     category.loading = false;
                 })
                
-            }, 3000)
+            }, 2000)
         }
     },
 

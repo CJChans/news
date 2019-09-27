@@ -10,7 +10,8 @@
 
         <div class="profile-center">
           <div class="name">
-            <span class="iconfont iconxingbienan"></span>
+            <span class="iconfont iconxingbienan nan" v-if="profile.gender==1"></span>
+            <span class="iconfont iconxingbienv nv" v-if="profile.gender==0"></span>
             <!-- 火星网友 -->
             {{profile.nickname}}
           </div>
@@ -70,7 +71,7 @@ export default {
         Authorization: localStorage.getItem("token")
       }
     }).then(res => {
-      //   console.log(res)
+        // console.log(res.data.data)
       const { data } = res.data;
       if (data) {
         this.profile = data;
@@ -106,8 +107,11 @@ export default {
     padding: 0 15px;
   }
   .name {
-    span {
+    .nan {
       color: #75b9eb;
+    }
+    .nv{
+      color: #ff67d5;
     }
   }
 
