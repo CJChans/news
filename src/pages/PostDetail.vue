@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
       <!-- 新闻的详情页的内容 -->
       <div class="article">
 
@@ -8,17 +8,16 @@
                   <span class="iconfont iconjiantou2" @click="$router.back()"></span>
                   <span class="iconfont iconnew"></span>
               </div>
-              <span class="focus">关注</span>
+                <span class="focus" v-if="!detail.has_follow">关注</span>
+                <span class="focus focus_active" v-else>已关注</span>
           </div>
 
-          <h3>新闻的标题内容</h3>
+          <h3>{{detail.title}}</h3>
 
-          <p  class="post-info">火星时报  2019-10-06</p>
+          <p  class="post-info">{{ detail.user.nickname }} 2019-10-06</p>
 
-          <div class="post-content">
-                新闻的详情页的内容  新闻的详情页的内容  新闻的详情页的内容 
-                新闻的详情页的内容  新闻的详情页的内容  新闻的详情页的内容 
-                新闻的详情页的内容  新闻的详情页的内容
+          <div class="post-content" v-html="detail.content">
+               
           </div>
       </div>
 
@@ -42,15 +41,43 @@
 <script>
 import PostFooter from "@/components/PostFooter"
 export default {
+    data(){
+        return{
+            //文章的详情
+            detail:{
+                user:{}
+            }
+
+        }
+    },
     components:{
         PostFooter
+    },
+
+    mounted(){
+        //请求文章的详情
+        // console.log(this.$route.params)
+        const {id} = this.$route.params
+        this.$axios({
+            url:"/post/" + id
+        }).then(res =>{
+            // console.log(res)
+            const {data} = res.data
+
+            //保存到详情
+            this.detail = data
+            console.log(this.detail)
+        })
     }
 }
 </script>
 
 <style scoped lang="less">
+    .container{
+         padding-bottom: 100 / 360 * 100vw;
+         padding: 10px; 
     .article{
-        padding: 10px;
+        
         .header{
             display: flex;
             justify-content: space-between;
@@ -74,12 +101,17 @@ export default {
                 text-align: center;
              
             }
+             .focus_active{
+            border: 1px #ccc solid;
+            color:#333;
+            background:none;
+            }           
 
              p{
             font-size: 12px;
             color: #999;
             margin-bottom: 10px;
-        }
+                }           
         }           
     }
 
@@ -103,5 +135,10 @@ export default {
                     color: #04c804;
                 }
             }
+            
+        }
+        }
+          /deep/ img{
+                    max-width: 100%;
         }
 </style>

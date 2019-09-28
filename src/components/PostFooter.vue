@@ -43,6 +43,7 @@ export default {
         border-top:1px #eee solid;
         padding: 0 10px;
         box-sizing: border-box;
+        background: #fff;
 
     .footer{               
         height: 60 / 360 * 100vw;
