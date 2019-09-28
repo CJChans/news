@@ -1,7 +1,7 @@
 <template>
 <!-- 首页 -->
   <div>
-      <!-- 红色块头部 -->
+      <!-- 头部 -->
       <div class="header">
           <span class="iconfont iconnew logo"></span>
 
@@ -133,6 +133,7 @@ export default {
         this.$axios(config).then(res => {
             // console.log(res)
             const {data} = res.data
+            // console.log(data)
             const newData = []
 
             //循环给每一个栏目都添加四个独立的属性
@@ -147,7 +148,7 @@ export default {
             //保存栏目列表到新的数据
             this.categories = newData
             // this.categories = data
-            // console.log(this.categories)
+            // console.log(this.categories) 
 
             // 必须先等待栏目请求完毕再请求文章列表
         this.$axios({
@@ -175,7 +176,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 0 10px;
-        background: #f00;
+        background: rgb(20, 143, 192);
 
         .logo{
             font-size: 50/360*100vw;
@@ -189,7 +190,7 @@ export default {
 
         .header-search{
             height: 34/360*100vw;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             flex:1;
             margin: 0 30px;
             display: flex;
@@ -205,11 +206,11 @@ export default {
         }
     }
     /deep/ .van-tabs__nav{
-        background:#f3e8e8;
+        background:#b6e0f3;
     }
     /deep/ .van-tabs__line{
         width:40px;
         height:2px;
-        background-color: blueviolet;
+        background-color: rgb(10, 134, 184);
     }
 </style>

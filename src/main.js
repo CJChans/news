@@ -17,6 +17,8 @@ import EditProfile from "@/pages/EditProfile";
 import UserFollow from "@/pages/UserFollow";
 import UserComment from "@/pages/UserComment";
 import Index from "@/pages/Index";
+import PostDetail from "@/pages/PostDetail";
+
 
 
 //在.vue文件中要使用router-link或者router-view.需要注册下插件
@@ -26,8 +28,8 @@ Vue.use(Vant)
 //把axios挂载到原型
 Vue.prototype.$axios = axios; //this.$axios
 // 基准路径，以后每次请求都会自动在前面加上该路径
-// axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "http://172.20.10.4:3000";
+axios.defaults.baseURL = "http://localhost:3000";
+// axios.defaults.baseURL = "http://172.20.10.4:3000";
 
 //路由:2.创建路由配置
 const routes = [
@@ -38,6 +40,8 @@ const routes = [
     { path: "/user_follow", component: UserFollow },
     { path: "/user_comment", component: UserComment },
     { path: "/index", component: Index },
+    { path: "/post_detail/:id", component: PostDetail },
+
 ]
 
 //路由:3.创建对象
