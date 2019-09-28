@@ -137,10 +137,10 @@ export default {
         .img-list{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 5px;
             img{
-                display: block;
-                width: 32%;
+                width: 33%;
                 height: 80/360*100vw;
 
                 //图片等比例缩放
@@ -189,6 +189,8 @@ export default {
                 background: rgba(0, 0, 0, 0.4);
                 width:46 / 360 * 100vw;
                 height:46 / 360 * 100vw;
+                left: 147/360*100vw;
+                top: 62/360*100vw;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
