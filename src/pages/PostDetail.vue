@@ -20,7 +20,8 @@
 
     <!-- 点赞按钮和分享链接 -->
     <div class="post-button">
-      <span>
+      <span @click="handleLike" 
+        :class="{ like_active: detail.has_like }">
         <i class="iconfont icondianzan"></i>
         168
       </span>
@@ -31,7 +32,7 @@
     </div>
 
     <!-- 页脚组件 -->
-    <PostFooter />
+    <PostFooter/>
   </div>
 </template>
 
@@ -66,14 +67,37 @@ export default {
           Authorization: localStorage.getItem("token")
         }
       }).then(res => {
-        console.log(res);
+        // console.log(res);
         const { message } = res.data;
         // if(message==="关注成功"){
         this.detail.has_follow = !this.detail.has_follow;
         this.$toast.success(message)
         // }
       });
-    }
+    },
+
+    // 点赞
+        handleLike(){
+            // 通过作者id关注用户
+            this.$axios({
+                url: "/post_like/" + this.detail.id,
+                // 添加头信息
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            }).then(res => {
+                // console.log(res)
+                const {message} = res.data;
+                    console.log(message)
+                if(message === "点赞成功"){
+                    // 修改关注的按钮的状态
+                    this.detail.has_like = true;
+                    this.$toast.success(message)
+                }else{
+                    this.detail.has_like = false;
+                }
+            })
+        }
   },
 
   mounted() {
@@ -157,12 +181,22 @@ export default {
       padding: 0 10px;
       line-height: 1.5;
       border-radius: 50px;
+      
       .iconweixin {
         color: #04c804;
       }
+       
+    }
+   .like_active{
+        border: 1px  red solid;
+        i{
+            color:red;
+        }
     }
   }
+  
 }
+ 
 /deep/ img {
   max-width: 100%;
 }
