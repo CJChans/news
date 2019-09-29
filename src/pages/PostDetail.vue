@@ -23,16 +23,16 @@
       <span @click="handleLike" 
         :class="{ like_active: detail.has_like }">
         <i class="iconfont icondianzan"></i>
-        168
+       {{detail.like_length}}
       </span>
       <span>
         <i class="iconfont iconweixin"></i>
-        微信
+         <a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#1">微信</a>
       </span>
     </div>
 
     <!-- 页脚组件 -->
-    <PostFooter/>
+    <PostFooter :post="detail" @handleStar="handleStar"/>
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
     return {
       //文章的详情
       detail: {
-        user: {}
+        user: {},       
       }
     };
   },
@@ -88,13 +88,37 @@ export default {
             }).then(res => {
                 // console.log(res)
                 const {message} = res.data;
-                    console.log(message)
+                    // console.log(message)
                 if(message === "点赞成功"){
                     // 修改关注的按钮的状态
                     this.detail.has_like = true;
+                     this.detail.like_length++;
                     this.$toast.success(message)
                 }else{
                     this.detail.has_like = false;
+                     this.detail.like_length--;
+                }
+            })
+        },
+
+        // 收藏
+        handleStar(){
+            // 通过作者id关注用户
+            this.$axios({
+                url: "/post_star/" + this.detail.id,
+                // 添加头信息
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            }).then(res => {
+              console.log(res)
+                const {message} = res.data;
+                if(message === "收藏成功"){
+                    // 修改关注的按钮的状态
+                    this.detail.has_star = true;
+                    this.$toast.success(message)
+                }else{
+                   this.detail.has_star = false;
                 }
             })
         }
@@ -118,7 +142,7 @@ export default {
 
       //保存到详情
       this.detail = data;
-      console.log(this.detail);
+      // console.log(this.detail);
     });
   }
 };

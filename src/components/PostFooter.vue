@@ -4,10 +4,16 @@
   <div class="footer" v-show="!isFocus">
       <input type="text" placeholder="写跟帖" @focus="handleFucos">
       <span>
-          <em>1068</em>
+          <em>{{post.comment_length}}</em>
           <i class="iconfont iconpinglun-"></i>
       </span>
-      <i class="iconfont iconshoucang"></i>
+      <!-- <i class="iconfont iconshoucang"></i> -->
+      <!-- 收藏 -->
+            <i 
+            class="iconfont iconshoucang" 
+            :class="{ star_active: post.has_star }"
+            @click="$emit('handleStar')"></i>
+
       <i class="iconfont iconfenxiang"></i>
   </div>
    <!-- 输入评论页脚, 这里显示隐藏必须要用v-show，原因是为了获得textare的dom元素 -->
@@ -19,12 +25,16 @@
 </template>
 
 <script>
+
 export default {
+   
     data(){
         return{
             isFocus:false
         }
     },
+     props:["post"],
+ 
     methods:{
         handleFucos(){
             this.isFocus = true
@@ -80,6 +90,10 @@ export default {
          .iconfont{
             font-size: 24px;
         }
+
+         .star_active{
+        color:red;
+    }
     }
 
     .footer-comment{
