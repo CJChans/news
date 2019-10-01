@@ -226,8 +226,8 @@ export default {
           align-items: center;
             img{
               display: block;
-              width: 25/360*100vw;
-              height: 25/360*100vw;
+              width: 32/360*100vw;
+              height: 32/360*100vw;
               margin-right: 5px;
             }
             span{             
