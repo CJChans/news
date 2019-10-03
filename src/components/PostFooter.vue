@@ -3,10 +3,13 @@
     <!-- 普通页脚 -->
   <div class="footer" v-show="!isFocus">
       <input type="text" placeholder="写跟帖" @focus="handleFucos">
+      <!-- 跳转到评论页面 -->
+      <router-link :to="`/post_comment/${post.id}`">
       <span>
           <em>{{post.comment_length}}</em>
           <i class="iconfont iconpinglun-"></i>
       </span>
+      </router-link>
       <!-- <i class="iconfont iconshoucang"></i> -->
       <!-- 收藏 -->
             <i 

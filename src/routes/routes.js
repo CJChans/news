@@ -6,6 +6,7 @@ import UserFollow from "@/pages/user_follow/UserFollow";
 import UserComment from "@/pages/user_comment/UserComment";
 import Index from "@/pages/index/Index.vue";
 import PostDetail from "@/pages/post_detail/PostDetail";
+import PostComment from "@/pages/post_comment/PostComment";
 
 //路由:2.创建路由配置
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
     { path: "/user_comment", component: UserComment },
     { path: "/", component: Index },
     { path: "/post_detail/:id", component: PostDetail },
+    { path: "/post_comment/:id", component: PostComment },
 
 ]
 
