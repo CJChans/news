@@ -1,5 +1,9 @@
 <template>
-  <div>123</div>
+<!-- 精彩跟帖页面 -->
+  <div>
+       <!-- 头部 -->
+      <HeaderNormal title="精彩跟帖"/>
+  </div>
 </template>
 
 <script>

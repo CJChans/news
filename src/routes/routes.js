@@ -1,12 +1,12 @@
-import Login from "@/pages/login/Login";
-import Register from "@/pages/register/Register";
-import Personal from "@/pages/personal/Personal";
-import EditProfile from "@/pages/edit_profile/EditProfile";
-import UserFollow from "@/pages/user_follow/UserFollow";
-import UserComment from "@/pages/user_comment/UserComment";
+import Login from "@/pages/login/Login.vue";
+import Register from "@/pages/register/Register.vue";
+import Personal from "@/pages/personal/Personal.vue";
+import EditProfile from "@/pages/edit_profile/EditProfile.vue";
+import UserFollow from "@/pages/user_follow/UserFollow.vue";
+import UserComment from "@/pages/user_comment/UserComment.vue";
 import Index from "@/pages/index/Index.vue";
-import PostDetail from "@/pages/post_detail/PostDetail";
-import PostComment from "@/pages/post_comment/PostComment";
+import PostDetail from "@/pages/post_detail/PostDetail.vue";
+import PostComment from "@/pages/post_comment/PostComment.vue";
 
 //路由:2.创建路由配置
 const routes = [
