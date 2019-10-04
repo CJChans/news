@@ -5,49 +5,31 @@
       <HeaderNormal title="精彩跟帖"/>
 
       <!-- 评论模块 -->
+      <div  v-for="(item,index) in comments" :key="index" class="bd-bottom">
       <div class="comment">
           <!-- 用户的信息 -->
           <div class="comment-info">
               <!-- 头像 -->
-              <img src="../../../static/20150108164231_t432j.png" alt="">
+              <img :src="$axios.dedault.baseURL + item.user.head_img" v-if="item.user.head_img">
+              <img src="../../../static/20150108164231_t432j.png" v-else>
               <!-- 用户的名字 -->
               <div class="user-info">
-                  <p>火星网友</p>
+                  <p>{{item.user.nickname}}</p>
                   <span>2小时前</span>
               </div>
           </div>
 
             <div class="reply">回复</div>
       </div>
-
-      <!-- 评论楼层 -->
-      <div class="comment-floor">
-
-          <div class="floor-header">
-              <span>1 火星网友</span>
-              <i>2小时前</i>
-              <em>回复</em>
-          </div>
-
+        <!-- 调用楼层组件 -->
+        <CommentFloor v-if="item.parent" :data="item.parent"/>
+           
           <div class="comment-content">
               生活不止眼前的苟且，还有诗和远方!
           </div>
-      </div>
-
-       <!-- 评论楼层 -->
-      <div class="comment-floor bd-tp">
-
-          <div class="floor-header">
-              <span>1 火星网友</span>
-              <i>2小时前</i>
-              <em>回复</em>
-          </div>
-
-          <div class="comment-content">
-              生活不止眼前的苟且，还有诗和远方!
-          </div>
-      </div>
-
+        <!-- 添加底部页脚组件 -->
+        <PostFooter :post="detail"/>
+</div>
 
   </div>
 </template>
