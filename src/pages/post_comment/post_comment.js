@@ -17,17 +17,26 @@ export default {
         }
     },
 
+    methods: {
+        // 请求评论的列表
+        getComments(id) {
+            //请求文章评论
+            this.$axios({
+                url: "/post_comment/" + id
+            }).then(res => {
+                // console.log(res.data)
+                const { data } = res.data;
+                this.comments = data
+            })
+        }
+    },
+
     mounted() {
         //文章的id
         const { id } = this.$route.params;
-        //请求文章评论
-        this.$axios({
-            url: "/post_comment/" + id
-        }).then(res => {
-            // console.log(res.data)
-            const { data } = res.data;
-            this.comments = data
-        })
+        // 请求评论的列表
+        this.getComments(id);
+
 
         //请求文章详情
         const config = {

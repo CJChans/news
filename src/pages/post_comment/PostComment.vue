@@ -28,7 +28,7 @@
               生活不止眼前的苟且，还有诗和远方!
           </div>
         <!-- 添加底部页脚组件 -->
-        <PostFooter :post="detail"/>
+        <PostFooter :post="detail" @getComments="getComments"/>
 </div>
 
   </div>
