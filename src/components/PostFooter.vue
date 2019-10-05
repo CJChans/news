@@ -40,7 +40,9 @@ export default {
         }
     },
      props:["post"],
- 
+     mounted(){
+         console.log('post-----',this.post)
+     },
     methods:{
         handleFucos(){
             this.isFocus = true
@@ -51,17 +53,17 @@ export default {
             if(!this.value){
                 return;
             }
-
+            const data = {
+                content: this.value
+            }
             this.$axios({
                 url:"/post_comment/" + this.post.id,
-                method:"post",
+                method:"POST",
                   // 添加头信息
                 headers: {
                     Authorization: localStorage.getItem("token")
                 },
-                data: {
-                    content: this.value
-                }
+               data
             }).then(res=>{
                 // console.log(res.data)
                 const {message} = res.data

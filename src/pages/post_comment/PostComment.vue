@@ -25,7 +25,7 @@
         <CommentFloor v-if="item.parent" :data="item.parent"/>
            
           <div class="comment-content">
-              生活不止眼前的苟且，还有诗和远方!
+            {{item.content}}
           </div>
         <!-- 添加底部页脚组件 -->
         <PostFooter :post="detail" @getComments="getComments"/>

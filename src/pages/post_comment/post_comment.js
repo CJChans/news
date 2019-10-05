@@ -20,7 +20,8 @@ export default {
     methods: {
         // 请求评论的列表
         getComments(id) {
-            //请求文章评论
+            console.log('id----------', id)
+                //请求文章评论
             this.$axios({
                 url: "/post_comment/" + id
             }).then(res => {
@@ -29,12 +30,14 @@ export default {
                 this.comments = data
             })
         }
+
     },
 
     mounted() {
         //文章的id
         const { id } = this.$route.params;
-        // 请求评论的列表
+        console.log('this.$route.params', id)
+            // 请求评论的列表
         this.getComments(id);
 
 
@@ -49,7 +52,7 @@ export default {
             };
         }
         this.$axios(config).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             const { data } = res.data;
             this.detail = data
         })
