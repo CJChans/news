@@ -19,7 +19,7 @@
               </div>
           </div>
 
-            <div class="reply">回复</div>
+            <div class="reply" @click="handleReply(item)">回复</div>
       </div>
         <!-- 调用楼层组件 -->
         <CommentFloor v-if="item.parent" :data="item.parent"/>
@@ -28,7 +28,14 @@
             {{item.content}}
           </div>
         <!-- 添加底部页脚组件 -->
-        <PostFooter :post="detail" @getComments="getComments"/>
+        <!-- <PostFooter :post="detail" @getComments="getComments"/> -->
+         <!-- post文章的详情
+        replyComment：要回复的评论
+        getComments：发布评论成功后重新请求评论的列表 -->
+        <PostFooter 
+        :post="detail" 
+        :replyComment="replyComment" 
+        @getComments="getComments"/>
 </div>
 
   </div>

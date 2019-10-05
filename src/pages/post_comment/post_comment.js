@@ -13,7 +13,9 @@ export default {
             //评论的列表
             comments: [],
             //文章的详情
-            detail: {}
+            detail: {},
+            // 保存点击回复的评论
+            replyComment: null
         }
     },
 
@@ -29,6 +31,11 @@ export default {
                 const { data } = res.data;
                 this.comments = data
             })
+        },
+        // 点击回复按钮时候触发的方法
+        handleReply(item) {
+            // 获取到当前要回复的id
+            this.replyComment = item;
         }
 
     },
