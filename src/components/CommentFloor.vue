@@ -1,20 +1,25 @@
 <template>
 <div>
+     <!-- 自己再次在调用自己 -->
+            <comment
+            v-if="data.parent"
+            :data="data.parent"
+            @handleReply = "handleReply">
+            </comment>
      <!-- 评论楼层 -->
       <div class="comment-floor">
 
           <div class="floor-header">
               <span> {{data.user.nickname}}</span>
               <i>2小时前</i>
-              <em>回复</em>
+              <em @click="handleReply">回复</em>
           </div>
 
           <div class="comment-content">
               {{data.content}}
           </div>
         </div>
-          <!-- 自己再次在调用自己 -->
-          <comment v-if="data.parent" :data="data.parent"></comment>
+         
       </div>
 </template>
 
@@ -22,7 +27,13 @@
 export default {
     //组件的名字，当前的组件可以通过改名字自己调用自己
     name:"comment",
-    props:["data"]
+    props:["data"],
+
+    methods:{
+        handleReply(){
+            this.$emit("handleReply", this.data);
+        }
+    }
 }
 </script>
 
@@ -47,5 +58,8 @@ export default {
         }
     }
     
+}
+.comment-floor:not(:first-child){
+  border-top: none;
 }
 </style>

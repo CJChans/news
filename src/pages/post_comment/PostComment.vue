@@ -5,6 +5,16 @@
       <HeaderNormal title="精彩跟帖"/>
 
       <!-- 评论模块 -->
+       <!-- v-model：是否在加载
+    finished：是否加载完毕
+    load：到底部触发加载 -->
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      :immediate-check="false"
+      @load="onLoad"
+    > 
       <div  v-for="(item,index) in comments" :key="index" class="bd-bottom">
       <div class="comment">
           <!-- 用户的信息 -->
@@ -22,7 +32,7 @@
             <div class="reply" @click="handleReply(item)">回复</div>
       </div>
         <!-- 调用楼层组件 -->
-        <CommentFloor v-if="item.parent" :data="item.parent"/>
+        <CommentFloor v-if="item.parent" :data="item.parent" @handleReply="handleReply"/>
            
           <div class="comment-content">
             {{item.content}}
@@ -38,7 +48,7 @@
         @handleRepy = "handleReply"
         @getComments="getComments"/>
 </div>
-
+</van-list>
   </div>
 </template>
 
