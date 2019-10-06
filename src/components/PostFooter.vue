@@ -2,7 +2,7 @@
 <div class="footer-wrap">
     <!-- 普通页脚 -->
   <div class="footer" v-show="!isFocus">
-      <input type="text" placeholder="写跟帖" @focus="handleFucos">
+      <input type="text" placeholder="写跟帖" @focus="handleFocus">
       <!-- 跳转到评论页面 -->
       <router-link :to="`/post_comment/${post.id}`">
       <span>
@@ -51,13 +51,15 @@ export default {
     props: ["post", "replyComment"],
     watch: {
         replyComment(){
+            if(this.replyComment){
             this.isFocus = true;
             this.placeholder = '@' + this.replyComment.user.nickname;
+            }
         }
     },
   
     methods:{
-        handleFucos(){
+        handleFocus(){
             this.isFocus = true
         },
 
@@ -65,6 +67,12 @@ export default {
         handleBlur(){
             if(!this.value){
                 this.isFocus = false;
+
+                //如果有回复的评论，清空回复的评论
+                if(this.replyComment){
+                    this.$emit("handleReply",null);
+                    this.placeholder = "写跟帖"
+                }
             }
         },
         //发布评论
@@ -94,7 +102,7 @@ export default {
                     this.value = "";
 
                     //滚动到底部
-                    window.scrollTo(0,document.body.offsetHeight)
+                    window.scrollTo(0,0)
                   
                  }
             })

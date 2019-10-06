@@ -22,8 +22,8 @@ export default {
     methods: {
         // 请求评论的列表
         getComments(id) {
-            console.log('id----------', id)
-                //请求文章评论
+            // console.log('id----------', id)
+            //请求文章评论
             this.$axios({
                 url: "/post_comment/" + id
             }).then(res => {
@@ -35,6 +35,7 @@ export default {
         // 点击回复按钮时候触发的方法
         handleReply(item) {
             // 获取到当前要回复的id
+            console.log(item)
             this.replyComment = item;
         }
 
@@ -43,8 +44,8 @@ export default {
     mounted() {
         //文章的id
         const { id } = this.$route.params;
-        console.log('this.$route.params', id)
-            // 请求评论的列表
+        // console.log('this.$route.params', id)
+        // 请求评论的列表
         this.getComments(id);
 
 
