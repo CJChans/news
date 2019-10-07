@@ -1,6 +1,8 @@
 import PostCard from "@/components/PostCard"
 export default {
+    name: "search",
     data() {
+
         return {
             // 当前默认的栏目, 没有登录应该0，有登录等于1, 最终的效果为了默认显示头条
 
