@@ -40,7 +40,7 @@
                 :immediate-check="false"
                 >
 
-                 <PostCard v-for="(item,index) in item.posts" :key="index" :post="item"/>
+                 <PostCard v-for="(item,index) in item.posts" v-show="item.open==1" :key="index" :post="item"/>
             </van-list>
 
             <!-- 加载中的图标 -->

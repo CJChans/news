@@ -71,7 +71,17 @@
 
 <script>
 export default {
-    props:['post']
+    props:['post'],
+
+    mounted(){
+        console.log(this.post)
+        //判断封面图片是否包含http
+        this.post.cover.forEach(item=>{
+            if(item.url.indexOf("http") === -1){
+                item.url = this.$axios.defaults.baseURL + item.url;
+            }
+        })
+    }
 }
 </script>
 
